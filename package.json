@@ -1,0 +1,25 @@
+{
+  "name": "JS-CodeStyle",
+  "version": "1.0.0",
+  "description": "ThinkMobiles JS-CodeStyle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YourTradingSystems/JS-CodeStyle.git"
+  },
+  "keywords": [
+    "JS",
+    "CodeStyle",
+    "thinkmobile",
+    "ThinkMobiles"
+  ],
+  "author": "ThinkMobiles JS Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YourTradingSystems/JS-CodeStyle/issues"
+  },
+  "homepage": "https://github.com/YourTradingSystems/JS-CodeStyle"
+}
