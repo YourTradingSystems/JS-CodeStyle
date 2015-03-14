@@ -39,6 +39,8 @@
 
 ## Types
 
+  - **typeof**: You can use the JavaScript typeof operator to find the type of a JavaScript variable.
+  - 
   - **Primitives**: When you access a primitive type you work directly on its value.
 
     + `string`
