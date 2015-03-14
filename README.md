@@ -39,15 +39,13 @@
 
 ## Types
 
-  - **typeof**: You can use the JavaScript typeof operator to find the type of a JavaScript variable.
-  - 
   - **Primitives**: When you access a primitive type you work directly on its value.
 
-    + `string`
-    + `number`
-    + `boolean`
-    + `null`
-    + `undefined`
+    + `String`
+    + `Number`
+    + `Boolean`
+    + `Null`
+    + `Undefined`
 
     ```javascript
     var foo = 1;
@@ -59,9 +57,9 @@
     ```
   - **Complex**: When you access a complex type you work on a reference to its value.
 
-    + `object`
-    + `array`
-    + `function`
+    + `Object`
+    + `Array`
+    + `Function`
 
     ```javascript
     var foo = [1, 2];
@@ -71,7 +69,18 @@
 
     console.log(foo[0], bar[0]); // => 9, 9
     ```
-
+    - **typeof**: You can use the JavaScript typeof operator to find the type of a JavaScript variable.
+    ```javascript
+        function f(){}
+        
+        typeof "John"                // 'string'
+        typeof 3.14                  // 'number'
+        typeof false                 // 'boolean'
+        typeof [1,2,3,4]             // 'object'
+        typeof {name:'John', age:34} // 'object'
+        
+        typeof f                // 'function'
+    ```
 **[⬆ back to top](#table-of-contents)**
 
 ## Objects
@@ -97,8 +106,10 @@
 
     // good
     var superman = {
-      defaults: { clark: 'kent' },
-      hidden: true
+        defaults: { 
+            clark: 'kent' 
+        },
+        hidden: true
     };
     ```
 
@@ -148,7 +159,7 @@
     someStack.push('abracadabra');
     ```
 
-  - When you need to copy an array use Array#slice. [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
+  - When you need to copy an array use Array#slice [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
 
     ```javascript
     var len = items.length;
@@ -213,7 +224,7 @@
       'with this, you would get nowhere fast.';
     ```
 
-  - When programmatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
+  - When programmatically building up a string, use string concatenation instead of Array#join. [jsPerf](http://jsperf.com/string-vs-array-concat/2).
 
     ```javascript
     var items;
@@ -223,37 +234,37 @@
 
     messages = [{
       state: 'success',
-      message: 'This one worked.'
+      text: 'This one worked.'
     }, {
       state: 'success',
-      message: 'This one worked as well.'
+      text: 'This one worked as well.'
     }, {
       state: 'error',
-      message: 'This one did not work.'
+      text: 'This one did not work.'
     }];
 
     length = messages.length;
 
-    // bad
+    // good
     function inbox(messages) {
-      items = '<ul>';
+      items = '';
 
-      for (i = 0; i < length; i++) {
-        items += '<li>' + messages[i].message + '</li>';
-      }
+      messages.forEach (function(message, index) {
+        items += message.text;
+      })
 
-      return items + '</ul>';
+      return items;
     }
 
-    // good
+    // bad
     function inbox(messages) {
       items = [];
 
       for (i = 0; i < length; i++) {
-        items[i] = messages[i].message;
+        items[i] = messages[i].text;
       }
 
-      return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
+      return items.join('');
     }
     ```
 
@@ -271,7 +282,7 @@
     };
 
     // named function expression
-    var named = function named() {
+    function named() {
       return true;
     };
 
@@ -290,13 +301,22 @@
       function test() {
         console.log('Nope.');
       }
+    } else {
+      function test() {
+          console.log('GGGGGGGGG.');
+      }
     }
 
     // good
     var test;
+    
     if (currentUser) {
-      test = function test() {
+      test = function () {
         console.log('Yup.');
+      };
+    } else {
+      test = function () {
+        console.log('GGGGGGGGG.');
       };
     }
     ```
@@ -460,11 +480,13 @@
 
     // good
     function() {
+      var name;
+    
       if (!arguments.length) {
         return false;
       }
-
-      var name = getName();
+      
+      name = getName();
 
       return true;
     }
@@ -496,6 +518,8 @@
     // The interpreter is hoisting the variable
     // declaration to the top of the scope,
     // which means our example could be rewritten as:
+    
+    // pretty Good
     function example() {
       var declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
@@ -527,7 +551,7 @@
 
       superPower(); // => ReferenceError superPower is not defined
 
-      var named = function superPower() {
+      var named = function superPower() { // Use this example if You need recursion
         console.log('Flying');
       };
     }
@@ -619,9 +643,6 @@
     // bad
     if (test)
       return false;
-
-    // good
-    if (test) return false;
 
     // good
     if (test) {
@@ -758,12 +779,12 @@
 
 ## Whitespace
 
-  - Use soft tabs set to 2 spaces.
+  - Use soft tabs set to 4 spaces.
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
 
     // bad
@@ -773,7 +794,7 @@
 
     // good
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
     ```
 
@@ -1001,7 +1022,7 @@
       return name;
     })();
 
-    // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
+    // good (guards against the function becoming an argument when two files with IIFEs are concatenated) for UI
     ;(function() {
       var name = 'Skywalker';
       return name;
@@ -1048,7 +1069,7 @@
     // bad
     var val = inputValue >> 0;
 
-    // bad
+    // good
     var val = parseInt(inputValue);
 
     // good
@@ -1153,31 +1174,22 @@
     });
     ```
 
-  - Use a leading underscore `_` when naming private properties.
-
-    ```javascript
-    // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
-
-    // good
-    this._firstName = 'Panda';
-    ```
-
-  - When saving a reference to `this` use `_this`.
+  - When saving a reference to `this` use `self`.
 
     ```javascript
     // bad
     function() {
-      var self = this;
+      var _this = this;
+    
       return function() {
-        console.log(self);
+        console.log(_this);
       };
     }
 
     // bad
     function() {
       var that = this;
+      
       return function() {
         console.log(that);
       };
@@ -1185,28 +1197,13 @@
 
     // good
     function() {
-      var _this = this;
+      var self = this;
+      
       return function() {
-        console.log(_this);
+        console.log(self);
       };
     }
     ```
-
-  - Name your functions. This is helpful for stack traces.
-
-    ```javascript
-    // bad
-    var log = function(msg) {
-      console.log(msg);
-    };
-
-    // good
-    var log = function log(msg) {
-      console.log(msg);
-    };
-    ```
-
-  - **Note:** IE8 and below exhibit some quirks with named function expressions.  See [http://kangax.github.io/nfe/](http://kangax.github.io/nfe/) for more info.
 
   - If your file exports a single class, your filename should be exactly the name of the class.
     ```javascript
