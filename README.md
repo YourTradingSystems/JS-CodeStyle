@@ -1362,6 +1362,7 @@
       return 'Jedi - ' + this.getName();
     };
     ```
+//ToDo add more examples for constructors
 
 **[⬆ back to top](#table-of-contents)**
 
