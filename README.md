@@ -1570,18 +1570,4 @@
   - [JSBooks](http://jsbooks.revolunet.com/) - Julien Bouquillon
   - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
 
-**Blogs**
-
-  - [DailyJS](http://dailyjs.com/)
-  - [JavaScript Weekly](http://javascriptweekly.com/)
-  - [JavaScript, JavaScript...](http://javascriptweblog.wordpress.com/)
-  - [Bocoup Weblog](http://weblog.bocoup.com/)
-  - [Adequately Good](http://www.adequatelygood.com/)
-  - [NCZOnline](http://www.nczonline.net/)
-  - [Perfection Kills](http://perfectionkills.com/)
-  - [Ben Alman](http://benalman.com/)
-  - [Dmitry Baranovskiy](http://dmitry.baranovskiy.com/)
-  - [Dustin Diaz](http://dustindiaz.com/)
-  - [nettuts](http://net.tutsplus.com/?s=javascript)
-
 **[⬆ back to top](#table-of-contents)**
